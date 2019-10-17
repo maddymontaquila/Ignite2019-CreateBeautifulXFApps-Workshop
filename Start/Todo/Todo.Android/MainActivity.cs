@@ -14,6 +14,8 @@ namespace Todo
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+            Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
+
 
             base.OnCreate(bundle);
             Instance = this;
