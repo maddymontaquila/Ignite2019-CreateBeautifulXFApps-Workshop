@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace Todo
@@ -14,7 +15,7 @@ namespace Todo
 		protected override async void OnAppearing()
 		{
 			base.OnAppearing();
-			listView.ItemsSource = await App.Database.GetItemsAsync();
+			myItems.ItemsSource = await App.Database.GetItemsAsync();
 		}
 
 		async void OnItemAdded(object sender, EventArgs e)
@@ -25,8 +26,8 @@ namespace Todo
 			});
 		}
 
-		async void OnListItemSelected(object sender, SelectedItemChangedEventArgs e)
-		{
+        async void OnListItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
             if (e.SelectedItem != null)
             {
                 await Navigation.PushAsync(new TodoItemPage
@@ -34,6 +35,17 @@ namespace Todo
                     BindingContext = e.SelectedItem as TodoItem
                 });
             }
-		}
-	}
+        }
+
+        //// Step 6b: Uncomment this, and comment out above!
+        //async void OnListItemSelected(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (e.CurrentSelection.FirstOrDefault() != null)
+        //        await Navigation.PushAsync(new TodoItemPage
+        //        {
+        //            BindingContext = e.CurrentSelection.FirstOrDefault() as TodoItem
+        //        });
+        //}
+
+    }
 }

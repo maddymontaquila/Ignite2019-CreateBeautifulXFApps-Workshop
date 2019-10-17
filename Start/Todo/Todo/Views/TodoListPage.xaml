@@ -12,17 +12,36 @@
 			</ToolbarItem.IconImageSource>
 		</ToolbarItem>
 	</ContentPage.ToolbarItems>
-	<ListView x:Name="listView"
+	<ListView x:Name="myItems"
                 Margin="20"
                 ItemSelected="OnListItemSelected">
 		<ListView.ItemTemplate>
 			<DataTemplate>
-				<ViewCell>
-					<StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-						<Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
-						<Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Done}" />
-					</StackLayout>
-				</ViewCell>
+                <ViewCell>
+                    <Grid Padding="10">
+                        <!--#region Grid definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+                        <Label Grid.Column="1"
+                               Text="{Binding Name}"
+                               FontAttributes="Bold" />
+                        <Image Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}" >
+                            <Image.Source>
+                                <FontImageSource Glyph="&#xf12c;"
+                                                FontFamily="{StaticResource MaterialFontFamily}"
+                                                Size="32"
+                                                Color="Green"/>
+                            </Image.Source>
+                        </Image>
+                    </Grid>
+                </ViewCell>
 			</DataTemplate>
 		</ListView.ItemTemplate>
 	</ListView>

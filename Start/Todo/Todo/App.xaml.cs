@@ -19,6 +19,10 @@ namespace Todo
                 BarBackgroundColor = (Color)Resources["Primary"],
                 BarTextColor = Color.White
             };
+
+            /** Use this for step 8 and comment out above
+             MainPage = new AppShell();
+             */
         }
 
         public static TodoItemDatabase Database

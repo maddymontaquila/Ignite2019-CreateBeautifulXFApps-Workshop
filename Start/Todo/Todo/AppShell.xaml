@@ -28,11 +28,21 @@
 
     <!-- Your Pages -->
     <TabBar>
-        <Tab Title="All Items" Icon="tab_feed.png">
+        <Tab Title="All Items">
+            <Tab.Icon>
+                <FontImageSource Glyph="&#xfa37;"
+                                 FontFamily="{StaticResource MaterialFontFamily}"
+                                 Size="32" />
+            </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:TodoListPage}" />
         </Tab>
-        <Tab Title="New" Icon="tab_about.png">
-            <ShellContent ContentTemplate="{DataTemplate local:TodoItemPage}" />
+        <Tab Title="About">
+            <Tab.Icon>
+                <FontImageSource Glyph="&#xff25;"
+                                 FontFamily="{StaticResource MaterialFontFamily}"
+                                 Size="32" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:Views.AboutPage}" />
         </Tab>
     </TabBar>
 
