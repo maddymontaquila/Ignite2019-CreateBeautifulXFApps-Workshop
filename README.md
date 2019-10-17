@@ -61,10 +61,11 @@ Replace the `<Image>` tag with:
 </Image>
 ```
 
+6. Now let's swap out the `ListView` for a more performant alternative - `CollectionView`, which is in preview in Xamarin.Forms 4.2. `CollectionView` automatically handles caching  
 
 customization list page and item page
 
-5. polishing / swapping out the checks and pluses for a good icon
+
 6. re-wire the app to go through a new app shell
 7. a11y
 
