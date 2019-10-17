@@ -61,7 +61,90 @@ Replace the `<Image>` tag with:
 </Image>
 ```
 
-6. Now let's swap out the `ListView` for a more performant alternative - `CollectionView`, which is in preview in Xamarin.Forms 4.2. `CollectionView` automatically handles caching  
+6. Now let's swap out the `ListView` for a more performant alternative - `CollectionView`, which is in preview in Xamarin.Forms 4.2. `CollectionView` automatically utilizes the virtualization capabilities of each native platform to make your lists appear faster. It also supports multiple columns of items, and a simpler API with no need for Cells. There are a few steps to change over your `ListView`:
+
+6a. Stop debugging your app, as we are going to change some C#, which can't be done during a debug session.
+
+6b. Go into the TodoListPage.xaml.cs file and comment out the `OnListItemSelected` function. Uncomment the version of it below labeled step 6.
+
+6c. Open `TodoListPage.xaml`. Change all instances of `ListView` to `CollectionView`.
+
+6d. Add `SelectionMode="Single"` to the opening tag of the `CollectionView`. This tells the `CollectionView` that you are only ever selecting one item at a time.
+
+6e. Replace `ItemSelected` with `SelectionChanged` in the opening tag of the `CollectionView`.
+
+6f. Delete the opening and closing `ViewCell` tags (keep the Grid and it's contents inside - CollectionView doesn't need a cell!)
+
+At the end of step 6, the XAML for your `CollectionView` should look like:
+
+```csharp
+<CollectionView x:Name="myItems"
+                Margin="20"
+                 SelectionMode="Single"
+                SelectionChanged="OnListItemSelected">
+		<CollectionView.ItemTemplate>
+			<DataTemplate>
+                    <Grid Padding="10">
+                        <!--#region Grid definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+                        <Label Grid.Column="1"
+                               Text="{Binding Name}"
+                               FontAttributes="Bold" />
+                        <Image Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}" >
+                            <Image.Source>
+                                <FontImageSource Glyph="&#xf12c;"
+                                                FontFamily="{StaticResource MaterialFontFamily}"
+                                                Size="32"
+                                                Color="Green"/>
+                            </Image.Source>
+                        </Image>
+                    </Grid>
+			</DataTemplate>
+		</CollectionView.ItemTemplate>
+</CollectionView>
+```
+
+Start debugging your app again so we can begin customizing the `CollectionView` using XAML Hot Reload!
+
+- under the data template add a frame around the grid , add a background colour around the fram `BackgroundColor = "blah"` and `IsClippedToBound=True` this does blah.
+
+```csharp
+<Frame BackgroundColour="Aquamarine" IsClippedToBounds="True>
+...
+</Frame>
+```
+
+- Notice that everything looks bad so we need to add some item spacing:
+
+```csharp
+<CollectionView.ItemsLayout>
+            <ListItemsLayout ItemSpacing="20" Orientation="Vertical" />
+</CollectionView.ItemsLayout>
+```
+
+next is make a frame around your stack layout so the items are cute - choose your own background color and text color!
+
+```csharp
+<Frame BackgroundColor="LightPink" Padding="10" IsClippedToBounds="True">
+                    <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+						<Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" TextColor="DarkMagenta" />
+						<Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Done}" />
+					</StackLayout>
+                </Frame>
+```
+
+Let's add the ability to see the item description on the page too. 
+
+7. Next step is to comment out the MainPage in the App.xaml.cs, and we are going to use shell for describe our heirarchy. Add (or comment out) intalizating a new shell page.
+
 
 customization list page and item page
 
@@ -72,3 +155,37 @@ customization list page and item page
 ### <a id="android"></a>Android
 
 1. Download and open the sample from GitHub in Visual Studio.
+
+
+
+
+
+
+<Grid Padding="10">
+                        <!--#region Grid definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+                        <Label Grid.Column="1"
+                               Text="{Binding Name}"
+                               FontAttributes="Bold" />
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding Notes}"
+                               FontAttributes="Italic"
+                               VerticalOptions="End" />
+                        <Image Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}" >
+                            <Image.Source>
+                                <FontImageSource Glyph="&#xf12c;"
+                                                FontFamily="{StaticResource MaterialFontFamily}"
+                                                Size="32"
+                                                Color="Green"/>
+                            </Image.Source>
+                        </Image>
+                    </Grid>
