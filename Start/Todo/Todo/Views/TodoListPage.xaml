@@ -32,14 +32,7 @@
                         <Label Grid.Column="1"
                                Text="{Binding Name}"
                                FontAttributes="Bold" />
-                        <Image Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}" >
-                            <Image.Source>
-                                <FontImageSource Glyph="&#xf12c;"
-                                                FontFamily="{StaticResource MaterialFontFamily}"
-                                                Size="32"
-                                                Color="Green"/>
-                            </Image.Source>
-                        </Image>
+                        <Image Source="check.png" Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}" />
                     </Grid>
                 </ViewCell>
 			</DataTemplate>

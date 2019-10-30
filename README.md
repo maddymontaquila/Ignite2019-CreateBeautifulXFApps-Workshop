@@ -130,26 +130,33 @@ Start debugging your app again so we can begin customizing the `CollectionView` 
 </CollectionView.ItemsLayout>
 ```
 
-next is make a frame around your stack layout so the items are cute - choose your own background color and text color!
+next is make a frame around your Grid so the items are cute - choose your own background color and text color!
 
 ```csharp
-<Frame BackgroundColor="LightPink" Padding="10" IsClippedToBounds="True">
-                    <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-						<Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" TextColor="DarkMagenta" />
-						<Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Done}" />
-					</StackLayout>
-                </Frame>
+<Frame BackgroundColor="LightPink" Padding="10" IsClippedToBounds="True" CornerRadius="5">
+    <Label Grid.Column="1"
+            Text="{Binding Name}"
+            FontAttributes="Bold" />
+    <Image Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}" >
+        <Image.Source>
+            <FontImageSource Glyph="&#xf12c;"
+                            FontFamily="{StaticResource MaterialFontFamily}"
+                            Size="32"
+                            Color="Green"/>
+        </Image.Source>
+    </Image>
+</Frame>
 ```
 
-Let's add the ability to see the item description on the page too. 
+Let's add the ability to see the item description on the page too. Add another label with Grid.Row="1" and set Text={Binding Notes}. Customize the text however you like.
 
-7. Next step is to comment out the MainPage in the App.xaml.cs, and we are going to use shell for describe our heirarchy. Add (or comment out) intalizating a new shell page.
+7. Next step is to comment out the MainPage in the App.xaml.cs, and we are going to use shell for describe our hierarchy. Add (or comment out) intializing a new shell page.
+
+Shell description
+
+8. Lets look at how to make this page use material design.
 
 
-customization list page and item page
-
-
-6. re-wire the app to go through a new app shell
 7. a11y
 
 ### <a id="android"></a>Android
