@@ -15,6 +15,7 @@ namespace Todo
             Forms.SetFlags("CollectionView_Experimental");
 
             Forms.Init();
+            FormsMaterial.Init();
 			LoadApplication(new App());
 			return base.FinishedLaunching(app, options);
 		}

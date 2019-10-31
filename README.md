@@ -37,7 +37,7 @@ Feel free to play around with the app in the simulator.
 
 5. We want to update the toolbar button to something that looks a little better. This is done by using the `FontImageSource` capabilities available in Xamarin.Forms 4.0 and later. We have added the font file to the projects for you, and added the font as an app-wide `StaticResource`. To change the toolbar icon, replace the `ToolbarItem.IconImageSource` code in the `TodoListPage.xaml` file with:
 
-    ```csharp
+    ```xml
     <ToolbarItem.IconImageSource>
         <FontImageSource 
                 Glyph="&#xf183;"
@@ -54,7 +54,7 @@ Feel free to play around with the app in the simulator.
 
     Replace the `<Image>` tag with:
 
-    ```csharp
+    ```xml
     <Image HorizontalOptions="End" IsVisible="{Binding Done}"
             Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
                                 Glyph=&#xf12c;,
@@ -82,7 +82,7 @@ Feel free to play around with the app in the simulator.
 
     At the end of step 7, the XAML for your `CollectionView` should look like:
 
-    ```csharp
+    ```xml
     <CollectionView x:Name="myItems"
                     Margin="20"
                     SelectionMode="Single"
@@ -120,7 +120,7 @@ Feel free to play around with the app in the simulator.
 
 8. We'll add some color to make the items stand out from the background. Under the data template on line XX. Add a frame around the grid with a background color. We also need to set the `IsClippedToBounds=True` property on the Frame, to ensure that it respects the bounds:
 
-    ```csharp
+    ```xml
     <Frame BackgroundColour="Aquamarine" IsClippedToBounds="True>
     ...
     </Frame>
@@ -128,7 +128,7 @@ Feel free to play around with the app in the simulator.
 
 9. With the background set, you can notice that everything looks bad and the items are overlapping. To fix this, we'll add some spacing around the items:
 
-    ```csharp
+    ```xml
     <CollectionView.ItemsLayout>
                 <ListItemsLayout ItemSpacing="20" Orientation="Vertical" />
     </CollectionView.ItemsLayout>
@@ -136,7 +136,7 @@ Feel free to play around with the app in the simulator.
 
 10. Next is make a frame around your stack layout so the items are cute - choose your own background color and text color!
 
-    ```csharp
+    ```xml
     <Frame BackgroundColor="LightPink" Padding="10" IsClippedToBounds="True" CornerRadius="5">
         <Label Grid.Column="1"
                 Text="{Binding Name}"
@@ -156,20 +156,84 @@ Feel free to play around with the app in the simulator.
 
 Xamarin.Forms Shell reduces the complexity of mobile app development by providing a single place to describe the visual hierarchy of an application. It also benefits your application by increased rendering speed and reduced memory consumption. For more information, see the [Xamarin.Forms Shell](https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/introduction) documentation.
 
-11. Next step is to comment out the initialization step of App.xaml.cs, as we are going to use Shell for describe our hierarchy. We have already added the AppShell.xaml file describing a tabbed page for you. Add (or comment out) initializing a new Shell page in App.xaml.cs.
+11. Next step is to comment out the initialization step of App.xaml.cs, as we are going to use Shell for describe our hierarchy. We have already added the AppShell.xaml file describing a tabbed page for you. 
+
+12. Add (or comment out) initializing a new Shell page in App.xaml.cs. 
+
+13. Start debugging the app again and change around colors in AppShell.xaml to customize your app!
 
 ## Using Material Design
 
-12. 
+Blurb about material https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/visual/material-visual
+
+14. We've already added the **Xamarin.Forms.Visual.Material** NuGet package and initialized it in your iOS and Android settings (How?).
+
+15. On `TodoItemPage.xaml` page add `Visual="Material"` to any of the buttons and hit save. See the material style button updated with hot reload.
+
+16. Remove that or change "Material" to "Default", and then add Visual="Material" to the overall headers of the page and save. Observe how it updates most of the controls on the page and makes it look guuuuuud. There are also nicer effects and drop shadows interacting with stuffs. If you add Material="Default" to any of the controls on the page you can override the page-set visual=material setting for that control.
 
 ## Adding Effects
 
 13. Effects
 
-## Making the app accessible
+Finally we gon make this  MOOOOOOOOOOOOVe.!
 
-14. a11y
+Stop debuggin cuz gotta edit C# so no hot reload rip
 
+Add this XAML to TodoItemPage after the buttons:
+```xml
+<Image x:Name="doneImage"
+               VerticalOptions="EndAndExpand"
+               Margin="10"
+               Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                                    Color=Green,
+                                    Glyph=&#xf12c;,
+                                    Size=64}"
+               Opacity="0"/>
+```
+
+This is our good friend the checkmark. Let's make it fade in and grow in size when you mark something as done.
+
+
+We've given you a blank event handler for when the switch is toggled. When it's toggled off, we want to set our image back to 0 opacity and its original size, so you don't see it! When it's toggled on, we want to fade in the checkmark and grow it in size!
+
+Turn
+```csharp
+async void Switch_ToggledAsync(object sender, ToggledEventArgs e)
+        {
+            // Part 13: Effects
+            if (e.Value == false)
+            {
+                // fade out
+                // scale down to original
+            }
+            else if (e.Value == true)
+            {
+                // fade in
+                // scale up to 2x
+            }
+        }
+
+```
+
+to
+
+```csharp
+async void Switch_ToggledAsync(object sender, ToggledEventArgs e)
+        {
+            // Part 13: Effects
+            if (e.Value == false)
+            {
+                await doneImage.FadeTo(0, 1000);
+                await doneImage.ScaleTo(1, 500);
+            }
+            else if (e.Value == true)
+            {
+                await doneImage.FadeTo(1, 1000);
+                await doneImage.ScaleTo(2, 2000);
+            }
+        }
+```
 
 
 

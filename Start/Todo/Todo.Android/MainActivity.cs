@@ -20,6 +20,7 @@ namespace Todo
             base.OnCreate(bundle);
             Instance = this;
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            global::Xamarin.Forms.FormsMaterial.Init(this, bundle);
             LoadApplication(new App());
         }
     }

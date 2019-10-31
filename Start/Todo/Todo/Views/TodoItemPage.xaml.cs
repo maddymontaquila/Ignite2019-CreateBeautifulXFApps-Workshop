@@ -28,5 +28,20 @@ namespace Todo
 		{
 			await Navigation.PopAsync();
 		}
-	}
+
+        async void Switch_ToggledAsync(object sender, ToggledEventArgs e)
+        {
+            // Part 13: Effects
+            if (e.Value == false)
+            {
+                // fade out
+                // scale down to original
+            }
+            else if (e.Value == true)
+            {
+                // fade in
+                // scale up to 2x
+            }
+        }
+    }
 }
