@@ -21,7 +21,7 @@ namespace Todo
             };
 
             //// Use this for step 8 and comment out above
-            // MainPage = new AppShell();
+            //MainPage = new AppShell();
 
         }
 

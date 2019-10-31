@@ -7,8 +7,8 @@
 		<ToolbarItem Text="+" Clicked="OnItemAdded">
 			<ToolbarItem.IconImageSource>
 				<OnPlatform x:TypeArguments="ImageSource">
-        <On Platform="Android" Value="plus.png" />
-    </OnPlatform>
+                <On Platform="Android" Value="plus.png" />
+                </OnPlatform>
 			</ToolbarItem.IconImageSource>
 		</ToolbarItem>
 	</ContentPage.ToolbarItems>

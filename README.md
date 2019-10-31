@@ -50,22 +50,19 @@ Feel free to play around with the app in the simulator.
 
     We've chosen to use the "Add Message" glyph, but you can use any that you like from the [Material Design icons](https://cdn.materialdesignicons.com/4.5.95/) website.
 
-6. Do the same with checkmark icon for each item. Find a [glyph]((https://cdn.materialdesignicons.com/4.5.95/)) you'd like to replace the existing icon with.
+6. Do the same with checkmark icon for each item. Find a [glyph]((https://cdn.materialdesignicons.com/4.5.95/)) you'd like to replace the existing icon with. We can use a markup extension to make the code neater.
 
     Replace the `<Image>` tag with:
 
     ```csharp
-    <Image HorizontalOptions="End" IsVisible="{Binding Done}" >
-        <Image.Source>
-            <FontImageSource Glyph="&#xf12c;"
-                                FontFamily="{StaticResource MaterialFontFamily}"
-                                Size="32"
-                                Color="Green"/>
-        </Image.Source>
-    </Image>
+    <Image HorizontalOptions="End" IsVisible="{Binding Done}"
+            Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                                Glyph=&#xf12c;,
+                                Color=Green,
+                                Size=32}" />
     ```
 
-    Here you are changing the source from a file (string) to a `FontImageSource`.
+    Here you are changing the source from a file (string) to a `FontImageSource`, a new feature in Xamarin.Forms 4.0.
 
 ## Using a Collection View
 
@@ -106,14 +103,11 @@ Feel free to play around with the app in the simulator.
                             <Label Grid.Column="1"
                                 Text="{Binding Name}"
                                 FontAttributes="Bold" />
-                            <Image Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}" >
-                                <Image.Source>
-                                    <FontImageSource Glyph="&#xf12c;"
-                                                    FontFamily="{StaticResource MaterialFontFamily}"
-                                                    Size="32"
-                                                    Color="Green"/>
-                                </Image.Source>
-                            </Image>
+                            <Image Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}"
+                                Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                                        Glyph=&#xf12c;,
+                                        Color=Green,
+                                        Size=32}" />
                         </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
@@ -143,97 +137,43 @@ Feel free to play around with the app in the simulator.
 10. Next is make a frame around your stack layout so the items are cute - choose your own background color and text color!
 
     ```csharp
-    <Frame BackgroundColor="LightPink" Padding="10" IsClippedToBounds="True">
-                        <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" TextColor="DarkMagenta" />
-                            <Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Done}" />
-                        </StackLayout>
-                    </Frame>
+    <Frame BackgroundColor="LightPink" Padding="10" IsClippedToBounds="True" CornerRadius="5">
+        <Label Grid.Column="1"
+                Text="{Binding Name}"
+                FontAttributes="Bold" />
+        <Image Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}"
+                Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                        Glyph=&#xf12c;,
+                        Color=Green,
+                        Size=32}" />
+        </Image>
+    </Frame>
     ```
 
-    Let's add the ability to see the item description on the page too.
+    Let's add the ability to see the item description on the page too. Add another label with Grid.Row="1" and set Text={Binding Notes}. Customize the text however you like.
 
 ## Using Xamarin.Forms Shell
 
 Xamarin.Forms Shell reduces the complexity of mobile app development by providing a single place to describe the visual hierarchy of an application. It also benefits your application by increased rendering speed and reduced memory consumption. For more information, see the [Xamarin.Forms Shell](https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/introduction) documentation.
 
-11. Next step is to comment out the MainPage in the App.xaml.cs, and we are going to use shell for describe our hierarchy. Add (or comment out) initialization a new shell page.
+11. Next step is to comment out the initialization step of App.xaml.cs, as we are going to use Shell for describe our hierarchy. We have already added the AppShell.xaml file describing a tabbed page for you. Add (or comment out) initializing a new Shell page in App.xaml.cs.
+
+## Using Material Design
+
+12. 
 
 ## Adding Effects
 
-12. Effects
+13. Effects
 
 ## Making the app accessible
 
-13. a11y
+14. a11y
 
 
 
-
-
-next is make a frame around your Grid so the items are cute - choose your own background color and text color!
-
-```csharp
-<Frame BackgroundColor="LightPink" Padding="10" IsClippedToBounds="True" CornerRadius="5">
-    <Label Grid.Column="1"
-            Text="{Binding Name}"
-            FontAttributes="Bold" />
-    <Image Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}" >
-        <Image.Source>
-            <FontImageSource Glyph="&#xf12c;"
-                            FontFamily="{StaticResource MaterialFontFamily}"
-                            Size="32"
-                            Color="Green"/>
-        </Image.Source>
-    </Image>
-</Frame>
-```
-
-Let's add the ability to see the item description on the page too. Add another label with Grid.Row="1" and set Text={Binding Notes}. Customize the text however you like.
-
-7. Next step is to comment out the MainPage in the App.xaml.cs, and we are going to use shell for describe our hierarchy. Add (or comment out) intializing a new shell page.
-
-Shell description
-
-8. Lets look at how to make this page use material design.
-
-
-7. a11y
 
 ### <a id="android"></a>Android
 
 1. Download and open the sample from GitHub in Visual Studio.
 
-
-
-
-
-
-<Grid Padding="10">
-                        <!--#region Grid definitions-->
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <!--#endregion-->
-                        <Label Grid.Column="1"
-                               Text="{Binding Name}"
-                               FontAttributes="Bold" />
-                        <Label Grid.Row="1"
-                               Grid.Column="1"
-                               Text="{Binding Notes}"
-                               FontAttributes="Italic"
-                               VerticalOptions="End" />
-                        <Image Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}" >
-                            <Image.Source>
-                                <FontImageSource Glyph="&#xf12c;"
-                                                FontFamily="{StaticResource MaterialFontFamily}"
-                                                Size="32"
-                                                Color="Green"/>
-                            </Image.Source>
-                        </Image>
-                    </Grid>
