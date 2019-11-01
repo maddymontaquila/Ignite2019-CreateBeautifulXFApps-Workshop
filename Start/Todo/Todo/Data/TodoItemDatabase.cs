@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using SQLite;
 
@@ -8,15 +9,20 @@ namespace Todo
 	{
 		readonly SQLiteAsyncConnection database;
 
+		public ObservableCollection<TodoItem> Items { get; } = new ObservableCollection<TodoItem> ();
+
 		public TodoItemDatabase(string dbPath)
 		{
 			database = new SQLiteAsyncConnection(dbPath);
 			database.CreateTableAsync<TodoItem>().Wait();
 		}
 
-		public Task<List<TodoItem>> GetItemsAsync()
+		public async Task LoadItemsAsync()
 		{
-			return database.Table<TodoItem>().ToListAsync();
+			var list = await database.Table<TodoItem>().ToListAsync();
+			Items.Clear();
+			foreach (var item in list)
+				Items.Add(item);
 		}
 
 		public Task<List<TodoItem>> GetItemsNotDoneAsync()
@@ -36,12 +42,14 @@ namespace Todo
 				return database.UpdateAsync(item);
 			}
 			else {
+				Items.Add(item);
 				return database.InsertAsync(item);
 			}
 		}
 
 		public Task<int> DeleteItemAsync(TodoItem item)
 		{
+			Items.Remove(item);
 			return database.DeleteAsync(item);
 		}
 	}

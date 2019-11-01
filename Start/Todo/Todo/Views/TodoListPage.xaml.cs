@@ -12,12 +12,6 @@ namespace Todo
 			InitializeComponent();
 		}
 
-		protected override async void OnAppearing()
-		{
-			base.OnAppearing();
-			myItems.ItemsSource = await App.Database.GetItemsAsync();
-		}
-
 		async void OnItemAdded(object sender, EventArgs e)
 		{
 			await Navigation.PushAsync(new TodoItemPage
@@ -34,6 +28,7 @@ namespace Todo
                 {
                     BindingContext = e.SelectedItem as TodoItem
                 });
+                ((ListView)sender).SelectedItem = null;
             }
         }
 
