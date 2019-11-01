@@ -11,8 +11,7 @@
 		<Entry Text="{Binding Notes}" />
 		<Label Text="Done" />
 		<Switch IsToggled="{Binding Done}" Toggled="Switch_ToggledAsync" />
-		<Button Text="Save" Clicked="OnSaveClicked" />
-		<Button Text="Delete" Clicked="OnDeleteClicked" />
-		<Button Text="Cancel" Clicked="OnCancelClicked" />
+		<Button Text="Save" IsVisible="{Binding IsNew}" Clicked="OnSaveClicked" />
+		<Button Text="Delete" IsVisible="{Binding IsExisting}" Clicked="OnDeleteClicked" />
 	</StackLayout>
 </ContentPage>

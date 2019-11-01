@@ -13,6 +13,9 @@ namespace Todo
 		[PrimaryKey, AutoIncrement]
 		public int ID { get; set; }
 
+		public bool IsNew => (ID == 0);
+		public bool IsExisting => !IsNew;
+
 		string name;
 		public string Name {
 			get => name;

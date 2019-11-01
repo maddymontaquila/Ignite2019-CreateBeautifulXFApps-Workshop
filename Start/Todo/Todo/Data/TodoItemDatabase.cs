@@ -37,7 +37,7 @@ namespace Todo
 
 		public Task<int> SaveItemAsync(TodoItem item)
 		{
-			if (item.ID != 0)
+			if (item.IsExisting)
 			{
 				return database.UpdateAsync(item);
 			}
