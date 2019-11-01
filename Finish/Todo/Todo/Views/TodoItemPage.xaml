@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Todo.TodoItemPage"
+             Title="{Binding Name}"
+             Visual="Material"
+             >
+	<StackLayout Margin="20"
+              VerticalOptions="StartAndExpand">
+		<Label Text="Name" />
+		<Entry Text="{Binding Name}" />
+		<Label Text="Notes" />
+		<Entry Text="{Binding Notes}" />
+		<Label Text="Done" />
+		<Switch IsToggled="{Binding Done}" Toggled="Switch_ToggledAsync" />
+		<Button BackgroundColor="#13293D"
+                Text="Save" Clicked="OnSaveClicked" />
+		<Button BackgroundColor="#13293D"
+                Text="Delete" Clicked="OnDeleteClicked" />
+		<Button Text="Cancel" Clicked="OnCancelClicked" Visual="Default" />
+        <Image x:Name="doneImage"
+               VerticalOptions="EndAndExpand"
+               Margin="10"
+               Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                                    Color=Green,
+                                    Glyph=&#xf12c;,
+                                    Size=64}"
+               Opacity="0"/>
+	</StackLayout>
+</ContentPage>

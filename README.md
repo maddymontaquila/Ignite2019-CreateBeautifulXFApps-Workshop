@@ -149,7 +149,7 @@ Xamarin.Forms Shell reduces the complexity of mobile app development by providin
 
 11. Stop debugging your app. We are going to use Shell to describe our hierarchy. We have already added the `AppShell.xaml` file describing a tabbed page for you. Open `AppShell.xaml` and inspect it.
 
-12. Comment out where the MainPage.xaml is wired up. Add (or uncomment) initializing a new Shell page in `App.xaml.cs`. Both areas are noted in the code already. 
+12. In `App.xaml.cs`, comment out where the MainPage.xaml is wired up. Add (or uncomment) initializing a new Shell page. Both areas are noted in the code already. 
 
 13. Start debugging the app again and change around colors in AppShell.xaml to customize your app! `NavigationPrimary` sets the top and bottom bars. You can overwrite either Setter, and any of the other attributes on the page including the size and color of the glyphs that make up the tabs.
 
@@ -194,7 +194,7 @@ Turn
 ```csharp
 async void Switch_ToggledAsync(object sender, ToggledEventArgs e)
         {
-            // Part 13: Effects
+            // Step 17: Effects
             if (e.Value == false)
             {
                 // fade out
@@ -214,7 +214,7 @@ to
 ```csharp
 async void Switch_ToggledAsync(object sender, ToggledEventArgs e)
         {
-            // Part 13: Effects
+            // Step 17: Effects
             if (e.Value == false)
             {
                 await doneImage.FadeTo(0, 1000);
