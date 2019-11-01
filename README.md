@@ -50,16 +50,19 @@ Feel free to play around with the app in the simulator.
 
     We've chosen to use the "Add Message" glyph, but you can use any that you like from the [Material Design icons](https://cdn.materialdesignicons.com/4.5.95/) website.
 
-6. Do the same with checkmark icon for each item. Find a [glyph]((https://cdn.materialdesignicons.com/4.5.95/)) you'd like to replace the existing icon with. We can use a markup extension to make the code neater.
+6. Do the same with checkmark icon for each item - you can see the checkmark by clicking an item and marking it as "Done". Find a [glyph]((https://cdn.materialdesignicons.com/4.5.95/)) you'd like to replace the existing icon with. We can use a markup extension to make the code neater.
 
     Replace the `<Image>` tag with:
 
     ```xml
-    <Image HorizontalOptions="End" IsVisible="{Binding Done}"
+    <Image IsVisible="{Binding Done}"
+            Grid.Column="2"
+            Grid.RowSpan="2"
+            HorizontalOptions="End"
             Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
-                                Glyph=&#xf12c;,
-                                Color=Green,
-                                Size=32}" />
+                    Glyph=&#xf12c;,
+                    Color=Green,
+                    Size=32}" />
     ```
 
     Here you are changing the source from a file (string) to a `FontImageSource`, a new feature in Xamarin.Forms 4.0.
@@ -103,7 +106,9 @@ Feel free to play around with the app in the simulator.
                             <Label Grid.Column="1"
                                 Text="{Binding Name}"
                                 FontAttributes="Bold" />
-                            <Image Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}"
+                            <Image Grid.Column="2"                            HorizontalOptions="End"
+                                Grid.RowSpan="2" 
+                                IsVisible="{Binding Done}"
                                 Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
                                         Glyph=&#xf12c;,
                                         Color=Green,
@@ -118,10 +123,10 @@ Feel free to play around with the app in the simulator.
 
 ## Working with Frames and Layouts
 
-8. We'll add some color to make the items stand out from the background. Under the data template on line XX. Add a frame around the grid with a background color. We also need to set the `IsClippedToBounds=True` property on the Frame, to ensure that it respects the bounds:
+8. We'll add some color to make the items stand out from the background. Under the data template and before the opening tag for the grid, add a `Frame` tag with a background color. We also need to set the `IsClippedToBounds=True` property on the Frame, to ensure that it respects the bounds:
 
     ```xml
-    <Frame BackgroundColour="Aquamarine" IsClippedToBounds="True>
+    <Frame BackgroundColor="Aquamarine" IsClippedToBounds="True>
     ...
     </Frame>
     ```
@@ -130,45 +135,33 @@ Feel free to play around with the app in the simulator.
 
     ```xml
     <CollectionView.ItemsLayout>
-                <ListItemsLayout ItemSpacing="20" Orientation="Vertical" />
+        <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
     </CollectionView.ItemsLayout>
     ```
 
-10. Next is make a frame around your stack layout so the items are cute - choose your own background color and text color!
+10. Let's add the ability to see the item description on the page too. Add another label with Grid.Row="1" and set Text={Binding Notes}. Customize the text however you like.
 
-    ```xml
-    <Frame BackgroundColor="LightPink" Padding="10" IsClippedToBounds="True" CornerRadius="5">
-        <Label Grid.Column="1"
-                Text="{Binding Name}"
-                FontAttributes="Bold" />
-        <Image Grid.Column="2" HorizontalOptions="End" Grid.RowSpan="2" IsVisible="{Binding Done}"
-                Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
-                        Glyph=&#xf12c;,
-                        Color=Green,
-                        Size=32}" />
-        </Image>
-    </Frame>
-    ```
-
-    Let's add the ability to see the item description on the page too. Add another label with Grid.Row="1" and set Text={Binding Notes}. Customize the text however you like.
+    Use a website like [Coolors](https://coolors.co/app) to generate a color scheme for your app. Set a `BackgroundColor` for the Frame, ContentPage, and if you'd like, a new color for the "Done" glyph. Change the `TextColor` for the items in the `ItemTemplate`, play around with `FontSize`, and add `FontAttributes` like "bold" or "italics". On your Frame, you can also add attributes like `CornerRadius` and `HasShadow`.
 
 ## Using Xamarin.Forms Shell
 
 Xamarin.Forms Shell reduces the complexity of mobile app development by providing a single place to describe the visual hierarchy of an application. It also benefits your application by increased rendering speed and reduced memory consumption. For more information, see the [Xamarin.Forms Shell](https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/introduction) documentation.
 
-11. Next step is to comment out the initialization step of App.xaml.cs, as we are going to use Shell for describe our hierarchy. We have already added the AppShell.xaml file describing a tabbed page for you. 
+11. Stop debugging your app. We are going to use Shell to describe our hierarchy. We have already added the `AppShell.xaml` file describing a tabbed page for you. Open `AppShell.xaml` and inspect it.
 
-12. Add (or comment out) initializing a new Shell page in App.xaml.cs. 
+12. Comment out where the MainPage.xaml is wired up. Add (or uncomment) initializing a new Shell page in `App.xaml.cs`. Both areas are noted in the code already. 
 
-13. Start debugging the app again and change around colors in AppShell.xaml to customize your app!
+13. Start debugging the app again and change around colors in AppShell.xaml to customize your app! `NavigationPrimary` sets the top and bottom bars. You can overwrite either Setter, and any of the other attributes on the page including the size and color of the glyphs that make up the tabs.
+
+    Switch between the About tab (feel free to edit!) and the All Items tab. See how the options are respected no matter what page you're on, and try changing `Shell.TabBarUnselectedColor` and `Shell.TabBarForegroundColor` to see what happens when you switch pages.
 
 ## Using Material Design
 
 Blurb about material https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/visual/material-visual
 
-14. We've already added the **Xamarin.Forms.Visual.Material** NuGet package and initialized it in your iOS and Android settings (How?).
+14. We've already added the **Xamarin.Forms.Visual.Material** NuGet package and initialized it in your iOS and Android settings using `FormsMaterial.Init()`.
 
-15. On `TodoItemPage.xaml` page add `Visual="Material"` to any of the buttons and hit save. See the material style button updated with hot reload.
+15. On `TodoItemPage.xaml` page add `Visual="Material"` to any of the buttons and save your XAML. See the material style button updated with hot reload.
 
 16. Remove that or change "Material" to "Default", and then add Visual="Material" to the overall headers of the page and save. Observe how it updates most of the controls on the page and makes it look guuuuuud. There are also nicer effects and drop shadows interacting with stuffs. If you add Material="Default" to any of the controls on the page you can override the page-set visual=material setting for that control.
 
@@ -178,7 +171,7 @@ Blurb about material https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user
 
 Finally we gon make this  MOOOOOOOOOOOOVe.!
 
-Stop debuggin cuz gotta edit C# so no hot reload rip
+Stop debugging cuz gotta edit C# so no hot reload rip
 
 Add this XAML to TodoItemPage after the buttons:
 ```xml

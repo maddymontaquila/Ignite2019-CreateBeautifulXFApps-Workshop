@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Todo.Views.AboutPage">
     <StackLayout>
-        <Label Text="Hi" />
+        <Label HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Text="Find this code at aka.ms/VSM_Xamarin_IgniteWorkshop" />
     </StackLayout>
 </ContentPage>

@@ -37,7 +37,7 @@ namespace Todo
             }
         }
 
-        //// Step 6b: Uncomment this, and comment out above!
+        //// Step 7b: Uncomment this, and comment out above!
         //async void OnListItemSelected(object sender, SelectionChangedEventArgs e)
         //{
         //    if (e.CurrentSelection.FirstOrDefault() != null)

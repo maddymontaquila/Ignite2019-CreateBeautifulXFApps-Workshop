@@ -5,7 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <!-- Application resource dictionary -->
-            <Color x:Key="Primary">Purple</Color>
+            <Color x:Key="Primary">#91CA47</Color>
             <Color x:Key="PrimaryDark">#FFA000</Color>
             <Color x:Key="Accent">#00BCD4</Color>
             <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">

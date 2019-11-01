@@ -14,13 +14,15 @@ namespace Todo
         {
             InitializeComponent();
 
+
+            // Comment this out for Step 12
             MainPage = new NavigationPage(new TodoListPage())
             {
                 BarBackgroundColor = (Color)Resources["Primary"],
                 BarTextColor = Color.White
             };
 
-            //// Use this for step 8 and comment out above
+            //// Step 12: Create a new AppShell
             //MainPage = new AppShell();
 
         }
