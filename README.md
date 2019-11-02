@@ -196,7 +196,7 @@ Blurb about material https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user
     This is our good friend the checkmark. Let's make it fade in and grow in size when you mark something as done.
 
 
-19. We've given you a blank event handler for when the switch is toggled. When it's toggled off, we want to set our image back to 0 opacity and its original size, so you don't see it! When it's toggled on, we want to fade in the checkmark and grow it in size!
+19. Go to TodoItemPage.xaml.cs and notice the blank event handler for when the switch is toggled. When it's toggled off, we want to set our image back to 0 opacity and its original size, so you don't see it! When it's toggled on, we want to fade in the checkmark and grow it in size!
 
     Turn
 
@@ -206,13 +206,13 @@ Blurb about material https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user
                 // Part 13: Effects
                 if (e.Value == false)
                 {
-                    // fade out
                     // scale down to original
                 }
                 else if (e.Value == true)
                 {
                     // fade in
                     // scale up to 2x
+                    // fade out
                 }
             }
 
@@ -226,18 +226,18 @@ Blurb about material https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user
                 // Part 13: Effects
                 if (e.Value == false)
                 {
-                    await doneImage.FadeTo(0, 1000);
                     await doneImage.ScaleTo(1, 500);
                 }
                 else if (e.Value == true)
                 {
                     await doneImage.FadeTo(1, 1000);
                     await doneImage.ScaleTo(2, 2000);
+                    await doneImage.FadeTo(0, 500);
                 }
             }
     ```
 
-
+20. Run the app
 
 ### <a id="android"></a>Android
 

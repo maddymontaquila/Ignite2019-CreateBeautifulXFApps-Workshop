@@ -6,7 +6,7 @@
        x:Class="Todo.AppShell">
 
     <!-- 
-        Styles and Resources 
+        Styles and Resources - Change these for Step 13
     -->
     <Shell.Resources>
         <ResourceDictionary>

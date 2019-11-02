@@ -36,13 +36,13 @@ namespace Todo
             // Part 13: Effects
             if (e.Value == false)
             {
-                await doneImage.FadeTo(0, 1000);
                 await doneImage.ScaleTo(1, 500);
             }
             else if (e.Value == true)
             {
                 await doneImage.FadeTo(1, 1000);
                 await doneImage.ScaleTo(2, 2000);
+                await doneImage.FadeTo(0, 500);
             }
         }
     }
