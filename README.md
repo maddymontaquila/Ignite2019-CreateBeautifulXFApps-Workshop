@@ -46,13 +46,13 @@ Feel free to play around with the app in the simulator.
     </ToolbarItem.IconImageSource>
     ```
 
-    The glyphs are represented as a 4 character unicode symbol starting with '\', however you have to escape the backslash using `&#x`.
+    Save the changes to see them reflected on the simulator.
 
-    We've chosen to use the "Add Message" glyph, but you can use any that you like from the [Material Design icons](https://cdn.materialdesignicons.com/4.5.95/) website.
+    The glyphs are represented as a 4 character unicode symbol starting with `\`, however you have to escape the backslash using `&#x`. We've chosen to use the "Add Message" glyph, but you can use any that you like from the [Material Design icons](https://cdn.materialdesignicons.com/4.5.95/) website.
 
 6. Do the same with checkmark icon for each item - you can see the checkmark by clicking an item and marking it as "Done". Find a [glyph]((https://cdn.materialdesignicons.com/4.5.95/)) you'd like to replace the existing icon with. We can use a markup extension to make the code neater.
 
-    Replace the `<Image>` tag with:
+    Replace the `<Image>` tag on line 36 with:
 
     ```xml
     <Image IsVisible="{Binding Done}"
@@ -71,9 +71,9 @@ Feel free to play around with the app in the simulator.
 
 7. Now let's swap out the `ListView` for a more performant alternative - `CollectionView`, which is in preview in Xamarin.Forms 4.2. `CollectionView` automatically utilizes the virtualization capabilities of each native platform to make your lists appear faster. It also supports multiple columns of items, and a simpler API with no need for Cells. There are a few steps to change your `ListView` to a `CollectionView`:
 
-    7 a. Stop debugging your app, as we are going to change some C#, which can't be done during a debug session.
+    7 a. Stop debugging your app. We are going to change some C#, which can't be done during a debug session.
 
-    7b. Go into the `TodoListPage.xaml.cs` file and comment out the `OnListItemSelected` function. Uncomment the version of it below labeled step 6.
+    7b. Go into the `TodoListPage.xaml.cs` file and comment out the `OnListItemSelected` function. Uncomment the version of it below labeled step 7.
 
     7c. Open `TodoListPage.xaml`. Change all instances of `ListView` to `CollectionView`.
 
@@ -119,7 +119,7 @@ Feel free to play around with the app in the simulator.
     </CollectionView>
     ```
 
-    Start debugging your app again so we can begin customizing the `CollectionView` using XAML Hot Reload!
+    Start debugging your app again to begin customizing the `CollectionView` using XAML Hot Reload!
 
 ## Working with Frames and Layouts
 
@@ -131,7 +131,7 @@ Feel free to play around with the app in the simulator.
     </Frame>
     ```
 
-9. With the background set, you can notice that everything looks bad and the items are overlapping. To fix this, we'll add some spacing around the items:
+9. With the background set, you can notice that the items are overlapping. To fix this, we'll add some spacing around the items:
 
     ```xml
     <CollectionView.ItemsLayout>
@@ -143,7 +143,9 @@ Feel free to play around with the app in the simulator.
 
     Use a website like [Coolors](https://coolors.co/app) to generate a color scheme for your app. Set a `BackgroundColor` for the Frame, ContentPage, and if you'd like, a new color for the "Done" glyph. Change the `TextColor` for the items in the `ItemTemplate`, play around with `FontSize`, and add `FontAttributes` like "bold" or "italics". On your Frame, you can also add attributes like `CornerRadius` and `HasShadow`.
 
-## Using Xamarin.Forms Shell
+11. Let's add the ability to see the item description on the page too. Add another label with `Grid.Row="1"` and set `Text={Binding Notes}`. Customize the text however you like.
+
+## Adding Xamarin.Forms Shell
 
 Xamarin.Forms Shell reduces the complexity of mobile app development by providing a single place to describe the visual hierarchy of an application. It also benefits your application by increased rendering speed and reduced memory consumption. For more information, see the [Xamarin.Forms Shell](https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/introduction) documentation.
 
@@ -167,66 +169,64 @@ Blurb about material https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user
 
 ## Adding Effects
 
-13. Effects
+17. Stop debuggin cuz gotta edit C# so no hot reload rip
 
-Finally we gon make this  MOOOOOOOOOOOOVe.!
+18. Add this XAML to TodoItemPage after the buttons:
 
-Stop debugging cuz gotta edit C# so no hot reload rip
+    ```xml
+    <Image x:Name="doneImage"
+                VerticalOptions="EndAndExpand"
+                Margin="10"
+                Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                                        Color=Green,
+                                        Glyph=&#xf12c;,
+                                        Size=64}"
+                Opacity="0"/>
+    ```
 
-Add this XAML to TodoItemPage after the buttons:
-```xml
-<Image x:Name="doneImage"
-               VerticalOptions="EndAndExpand"
-               Margin="10"
-               Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
-                                    Color=Green,
-                                    Glyph=&#xf12c;,
-                                    Size=64}"
-               Opacity="0"/>
-```
-
-This is our good friend the checkmark. Let's make it fade in and grow in size when you mark something as done.
+    This is our good friend the checkmark. Let's make it fade in and grow in size when you mark something as done.
 
 
-We've given you a blank event handler for when the switch is toggled. When it's toggled off, we want to set our image back to 0 opacity and its original size, so you don't see it! When it's toggled on, we want to fade in the checkmark and grow it in size!
+19. We've given you a blank event handler for when the switch is toggled. When it's toggled off, we want to set our image back to 0 opacity and its original size, so you don't see it! When it's toggled on, we want to fade in the checkmark and grow it in size!
 
-Turn
-```csharp
-async void Switch_ToggledAsync(object sender, ToggledEventArgs e)
-        {
-            // Step 17: Effects
-            if (e.Value == false)
+    Turn
+
+    ```csharp
+    async void Switch_ToggledAsync(object sender, ToggledEventArgs e)
             {
-                // fade out
-                // scale down to original
+                // Part 13: Effects
+                if (e.Value == false)
+                {
+                    // fade out
+                    // scale down to original
+                }
+                else if (e.Value == true)
+                {
+                    // fade in
+                    // scale up to 2x
+                }
             }
-            else if (e.Value == true)
-            {
-                // fade in
-                // scale up to 2x
-            }
-        }
 
-```
+    ```
 
-to
+    to
 
-```csharp
-async void Switch_ToggledAsync(object sender, ToggledEventArgs e)
-        {
-            // Step 17: Effects
-            if (e.Value == false)
+    ```csharp
+    async void Switch_ToggledAsync(object sender, ToggledEventArgs e)
             {
-                await doneImage.FadeTo(0, 1000);
-                await doneImage.ScaleTo(1, 500);
+                // Part 13: Effects
+                if (e.Value == false)
+                {
+                    await doneImage.FadeTo(0, 1000);
+                    await doneImage.ScaleTo(1, 500);
+                }
+                else if (e.Value == true)
+                {
+                    await doneImage.FadeTo(1, 1000);
+                    await doneImage.ScaleTo(2, 2000);
+                }
             }
-            else if (e.Value == true)
-            {
-                await doneImage.FadeTo(1, 1000);
-                await doneImage.ScaleTo(2, 2000);
-            }
-        }
-```
+    ```
 
 
 
