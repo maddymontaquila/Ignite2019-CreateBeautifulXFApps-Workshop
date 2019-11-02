@@ -40,6 +40,7 @@ namespace Todo
         //        {
         //            BindingContext = e.CurrentSelection.FirstOrDefault() as TodoItem
         //        });
+        //       ((CollectionView)sender).SelectedItem = null;
         //}
 
     }

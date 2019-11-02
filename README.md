@@ -7,7 +7,6 @@ You should leave this workshop today knowing the following:
 - how to create beautiful Xamarin.Forms app
 - Use Hot Reload to iterate on your UI
 
-
 ## Before we begin – Choose your setup:
 
 What OS are you using?
@@ -52,7 +51,7 @@ Feel free to play around with the app in the simulator.
 
 6. Do the same with checkmark icon for each item - you can see the checkmark by clicking an item and marking it as "Done". Find a [glyph]((https://cdn.materialdesignicons.com/4.5.95/)) you'd like to replace the existing icon with. We can use a markup extension to make the code neater.
 
-    Replace the `<Image>` tag on line 36 with:
+    Replace the `<Image>` tag on line 37 with:
 
     ```xml
     <Image IsVisible="{Binding Done}"
@@ -86,10 +85,10 @@ Feel free to play around with the app in the simulator.
     At the end of step 7, the XAML for your `CollectionView` should look like:
 
     ```xml
-    <CollectionView x:Name="myItems"
-                    Margin="20"
-                    SelectionMode="Single"
-                    SelectionChanged="OnListItemSelected">
+    <CollectionView Margin="20"
+                SelectionMode="Single"
+                SelectionChanged="OnListItemSelected"
+                ItemsSource="{Binding Source={x:Static todo:App.Database}, Path=Items}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                         <Grid Padding="10">
@@ -106,13 +105,14 @@ Feel free to play around with the app in the simulator.
                             <Label Grid.Column="1"
                                 Text="{Binding Name}"
                                 FontAttributes="Bold" />
-                            <Image Grid.Column="2"                            HorizontalOptions="End"
-                                Grid.RowSpan="2" 
-                                IsVisible="{Binding Done}"
+                            <Image IsVisible="{Binding Done}"
+                                Grid.Column="2"
+                                Grid.RowSpan="2"
+                                HorizontalOptions="End"
                                 Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
-                                        Glyph=&#xf12c;,
-                                        Color=Green,
-                                        Size=32}" />
+                                    Glyph=&#xf12c;,
+                                    Color=Green,
+                                    Size=32}" />
                         </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
@@ -126,7 +126,7 @@ Feel free to play around with the app in the simulator.
 8. We'll add some color to make the items stand out from the background. Under the data template and before the opening tag for the grid, add a `Frame` tag with a background color. We also need to set the `IsClippedToBounds=True` property on the Frame, to ensure that it respects the bounds:
 
     ```xml
-    <Frame BackgroundColor="Aquamarine" IsClippedToBounds="True>
+    <Frame BackgroundColor="Aquamarine" IsClippedToBounds="True">
     ...
     </Frame>
     ```
@@ -142,8 +142,6 @@ Feel free to play around with the app in the simulator.
 10. Let's add the ability to see the item description on the page too. Add another label with Grid.Row="1" and set Text={Binding Notes}. Customize the text however you like.
 
     Use a website like [Coolors](https://coolors.co/app) to generate a color scheme for your app. Set a `BackgroundColor` for the Frame, ContentPage, and if you'd like, a new color for the "Done" glyph. Change the `TextColor` for the items in the `ItemTemplate`, play around with `FontSize`, and add `FontAttributes` like "bold" or "italics". On your Frame, you can also add attributes like `CornerRadius` and `HasShadow`.
-
-11. Let's add the ability to see the item description on the page too. Add another label with `Grid.Row="1"` and set `Text={Binding Notes}`. Customize the text however you like.
 
 ## Adding Xamarin.Forms Shell
 
