@@ -72,7 +72,7 @@ Feel free to play around with the app in the simulator.
 
 ## Using a Collection View
 
-7. Now let's swap out the `ListView` for a more performant alternative - `CollectionView`, which is in preview in Xamarin.Forms 4.2. `CollectionView` automatically utilizes the virtualization capabilities of each native platform to make your lists appear faster. It also supports multiple columns of items, and a simpler API with no need for Cells. There are a few steps to change your `ListView` to a `CollectionView`:
+7. Now let's swap out the `ListView` for a more performant alternative - `CollectionView`, which is new in Xamarin.Forms 4.3. `CollectionView` automatically utilizes the virtualization capabilities of each native platform to make your lists appear faster. It also supports multiple columns of items, and a simpler API with no need for Cells. There are a few steps to change your `ListView` to a `CollectionView`:
 
     7 a. Stop debugging your app. We are going to change some C#, which can't be done during a debug session.
 
@@ -125,7 +125,7 @@ Feel free to play around with the app in the simulator.
 
     Start debugging your app again to begin customizing the `CollectionView` using XAML Hot Reload!
 
-## Working with Frames and Layouts
+## Working with Frames and ItemTemplates
 
 8. We'll add some color to make the items stand out from the background. Under the data template and before the opening tag for the grid, add a `Frame` tag with a background color. We also need to set the `IsClippedToBounds=True` property on the Frame, to ensure that it respects the bounds:
 
