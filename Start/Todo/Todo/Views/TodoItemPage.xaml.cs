@@ -10,6 +10,13 @@ namespace Todo
 			InitializeComponent();
 		}
 
+		protected override async void OnDisappearing ()
+		{
+			var todoItem = (TodoItem)BindingContext;
+			if (todoItem.IsExisting)
+				await App.Database.SaveItemAsync(todoItem);
+		}
+
 		async void OnSaveClicked(object sender, EventArgs e)
 		{
 			var todoItem = (TodoItem)BindingContext;
@@ -21,11 +28,6 @@ namespace Todo
 		{
 			var todoItem = (TodoItem)BindingContext;
 			await App.Database.DeleteItemAsync(todoItem);
-			await Navigation.PopAsync();
-		}
-
-		async void OnCancelClicked(object sender, EventArgs e)
-		{
 			await Navigation.PopAsync();
 		}
 
