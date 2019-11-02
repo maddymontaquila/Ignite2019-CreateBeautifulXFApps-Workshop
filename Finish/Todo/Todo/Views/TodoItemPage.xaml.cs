@@ -10,6 +10,13 @@ namespace Todo
 			InitializeComponent();
 		}
 
+		protected override async void OnDisappearing ()
+		{
+			var todoItem = (TodoItem)BindingContext;
+			if (todoItem.IsExisting)
+				await App.Database.SaveItemAsync(todoItem);
+		}
+
 		async void OnSaveClicked(object sender, EventArgs e)
 		{
 			var todoItem = (TodoItem)BindingContext;
@@ -24,14 +31,9 @@ namespace Todo
 			await Navigation.PopAsync();
 		}
 
-		async void OnCancelClicked(object sender, EventArgs e)
-		{
-			await Navigation.PopAsync();
-		}
-
         async void Switch_ToggledAsync(object sender, ToggledEventArgs e)
         {
-            // Step 17: Effects
+            // Part 13: Effects
             if (e.Value == false)
             {
                 await doneImage.FadeTo(0, 1000);

@@ -4,8 +4,12 @@
 
 You should leave this workshop today knowing the following:
 
-- how to create beautiful Xamarin.Forms app
-- Use Hot Reload to iterate on your UI
+- Use FontImageSource to add Material Icons to your UI
+- Switch your existing `ListView` to `CollectionView`, a more performant alternative
+- Use Frames and background colors/font attributes to make your app more visually appearing
+- Switch your app to use Xamarin.Forms Shell, which handles your navigation for you
+- Switch a page of your app to use the Xamarin.Forms Visual system and implement Material design
+- Make a simple animation for a page
 
 ## Before we begin – Choose your setup:
 
@@ -126,7 +130,8 @@ Feel free to play around with the app in the simulator.
 8. We'll add some color to make the items stand out from the background. Under the data template and before the opening tag for the grid, add a `Frame` tag with a background color. We also need to set the `IsClippedToBounds=True` property on the Frame, to ensure that it respects the bounds:
 
     ```xml
-    <Frame BackgroundColor="Aquamarine" IsClippedToBounds="True">
+    <Frame BackgroundColor="LightPink" 
+            IsClippedToBounds="True">
     ...
     </Frame>
     ```
@@ -139,7 +144,13 @@ Feel free to play around with the app in the simulator.
     </CollectionView.ItemsLayout>
     ```
 
-10. Let's add the ability to see the item description on the page too. Add another label with Grid.Row="1" and set Text={Binding Notes}. Customize the text however you like.
+10. Let's add the ability to see the item description on the page too. Add another label with `Grid.Row="2"`, `Grid.Column="1"`, and set `Text={Binding Notes}`. It should look like the following:
+
+```xml
+    <Label Grid.Row="2"
+            Grid.Column="1"
+            Text="{Binding Notes}" />
+```
 
     Use a website like [Coolors](https://coolors.co/app) to generate a color scheme for your app. Set a `BackgroundColor` for the Frame, ContentPage, and if you'd like, a new color for the "Done" glyph. Change the `TextColor` for the items in the `ItemTemplate`, play around with `FontSize`, and add `FontAttributes` like "bold" or "italics". On your Frame, you can also add attributes like `CornerRadius` and `HasShadow`.
 
@@ -153,7 +164,7 @@ Xamarin.Forms Shell reduces the complexity of mobile app development by providin
 
 13. Start debugging the app again and change around colors in AppShell.xaml to customize your app! `NavigationPrimary` sets the top and bottom bars. You can overwrite either Setter, and any of the other attributes on the page including the size and color of the glyphs that make up the tabs.
 
-    Switch between the About tab (feel free to edit!) and the All Items tab. See how the options are respected no matter what page you're on, and try changing `Shell.TabBarUnselectedColor` and `Shell.TabBarForegroundColor` to see what happens when you switch pages.
+    Switch between the About tab (feel free to edit!) and the All Items tab. See how the options are respected no matter what page you're on. Change `Shell.TabBarUnselectedColor` and `Shell.TabBarForegroundColor` to see what happens when you switch pages.
 
 ## Using Material Design
 
@@ -161,9 +172,9 @@ Blurb about material https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user
 
 14. We've already added the **Xamarin.Forms.Visual.Material** NuGet package and initialized it in your iOS and Android settings using `FormsMaterial.Init()`.
 
-15. On `TodoItemPage.xaml` page add `Visual="Material"` to any of the buttons and save your XAML. See the material style button updated with hot reload.
+15. On `TodoItemPage.xaml` page add `Visual="Material"` to the Delete button and save your XAML. See the material style button updated with hot reload.
 
-16. Remove that or change "Material" to "Default", and then add Visual="Material" to the overall headers of the page and save. Observe how it updates most of the controls on the page and makes it look guuuuuud. There are also nicer effects and drop shadows interacting with stuffs. If you add Material="Default" to any of the controls on the page you can override the page-set visual=material setting for that control.
+16. Change "Material" to "Default", and then add Visual="Material" to the overall headers of the page and save. Observe how it updates most of the controls on the page and gives it a consistent style.
 
 ## Adding Effects
 

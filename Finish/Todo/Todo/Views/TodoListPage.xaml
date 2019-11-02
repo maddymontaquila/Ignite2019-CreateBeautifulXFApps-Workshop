@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:todo="using:Todo"
              x:Class="Todo.TodoListPage"
              Title="Todo"
-             BackgroundColor="#13293D"
-             >
+             BackgroundColor="WhiteSmoke">
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Text="+" Clicked="OnItemAdded">
 			<ToolbarItem.IconImageSource>
                 <FontImageSource 
-                  Glyph="&#xf183;"
-                  FontFamily="{StaticResource MaterialFontFamily}"
-                  Size="32" />
+                    Glyph="&#xf183;"
+                    FontFamily="{StaticResource MaterialFontFamily}"
+                    Size="32" />
             </ToolbarItem.IconImageSource>
 		</ToolbarItem>
 	</ContentPage.ToolbarItems>
-	<CollectionView x:Name="myItems"
-                Margin="10, 20, 10, 0"
-                SelectionMode="Single"
-                SelectionChanged="OnListItemSelected">
+	<CollectionView Margin="10"
+                    SelectionMode="Single"
+                    SelectionChanged="OnListItemSelected"
+                    ItemsSource="{Binding Source={x:Static todo:App.Database}, Path=Items}">
         <CollectionView.ItemsLayout>
-            <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+            <LinearItemsLayout ItemSpacing="10"
+                               Orientation="Vertical" />
         </CollectionView.ItemsLayout>
-		<CollectionView.ItemTemplate>
+        <CollectionView.ItemTemplate>
 			<DataTemplate>
-                <Frame BackgroundColor="White"
-                       IsClippedToBounds="True"
-                       CornerRadius="5"
-                       HasShadow="True"
+                <Frame IsClippedToBounds="True"
+                       BackgroundColor="LightPink"
+                       CornerRadius="12"
                        >
                     <Grid>
                         <!--#region Grid definitions-->
@@ -41,26 +41,23 @@
                         </Grid.ColumnDefinitions>
                         <!--#endregion-->
                         <Label Grid.Column="1"
-                                Text="{Binding Name}"
-                                FontAttributes="None"
-                                TextColor="#13293D"
-                                FontSize="16"
-                               />
+                               Text="{Binding Name}"
+                               FontAttributes="Bold"
+                               TextColor="DimGray"
+                               FontSize="Medium"/>
                         <Label Grid.Row="2"
                                Grid.Column="1"
                                Text="{Binding Notes}"
-                               FontAttributes="Italic"
-                               FontSize="12"
-                               Padding="0"
-                               />
+                               TextColor="White"
+                               FontSize="Small"/>
                         <Image IsVisible="{Binding Done}"
-                               Grid.Column="2"
-                               Grid.RowSpan="2"
-                               HorizontalOptions="End"
-                               Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
-                                        Glyph=&#xf12c;,
-                                        Color=#1B98E0,
-                                        Size=32}" />
+                            Grid.Column="2"
+                            Grid.RowSpan="2"
+                            HorizontalOptions="End"
+                            Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                                    Glyph=&#xf12c;,
+                                    Color=Green,
+                                    Size=32}" />
                     </Grid>
                 </Frame>
 			</DataTemplate>

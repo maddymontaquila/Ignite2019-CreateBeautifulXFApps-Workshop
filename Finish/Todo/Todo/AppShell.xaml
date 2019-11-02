@@ -10,17 +10,17 @@
     -->
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="NavigationPrimary">#91CA47</Color>
+            <Color x:Key="NavigationPrimary">#133C55</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
                 <Setter Property="Shell.TitleColor" Value="White" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
-                <Setter Property="Shell.TabBarBackgroundColor" Value="White" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="#13293D"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="#13293D"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="#13293D"/>
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="LightGray"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
@@ -31,18 +31,14 @@
         <Tab Title="All Items"
              Icon="{FontImage Glyph=&#xfa37;,
                                 FontFamily={StaticResource MaterialFontFamily},
-                                Size=30,
-                                Color=#13293D
-                                }" >
+                                Size=24}" >
             <ShellContent ContentTemplate="{DataTemplate local:TodoListPage}" />
         </Tab>
 
         <Tab Title="About"
              Icon="{FontImage Glyph=&#xff25;,
                                 FontFamily={StaticResource MaterialFontFamily},
-                                Size=30,
-                                Color=#13293D
-                                }" >
+                                Size=24}" >
             <ShellContent ContentTemplate="{DataTemplate local:Views.AboutPage}" />
         </Tab>
 

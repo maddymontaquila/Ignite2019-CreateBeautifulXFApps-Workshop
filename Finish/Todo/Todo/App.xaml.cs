@@ -14,7 +14,8 @@ namespace Todo
         {
             InitializeComponent();
 
-            // Comment this out for Step 12
+
+            //// Comment this out for Step 12
             //MainPage = new NavigationPage(new TodoListPage())
             //{
             //    BarBackgroundColor = (Color)Resources["Primary"],
@@ -24,7 +25,7 @@ namespace Todo
             // Step 12: Create a new AppShell
             MainPage = new AppShell();
 
-        }
+    }
 
         public static TodoItemDatabase Database
         {
@@ -33,6 +34,7 @@ namespace Todo
                 if (database == null)
                 {
                     database = new TodoItemDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
+                    database.LoadItemsAsync();
                 }
                 return database;
             }

@@ -31,14 +31,14 @@
         <Tab Title="All Items"
              Icon="{FontImage Glyph=&#xfa37;,
                                 FontFamily={StaticResource MaterialFontFamily},
-                                Size=32}" >
+                                Size=24}" >
             <ShellContent ContentTemplate="{DataTemplate local:TodoListPage}" />
         </Tab>
 
         <Tab Title="About"
              Icon="{FontImage Glyph=&#xff25;,
                                 FontFamily={StaticResource MaterialFontFamily},
-                                Size=32}" >
+                                Size=24}" >
             <ShellContent ContentTemplate="{DataTemplate local:Views.AboutPage}" />
         </Tab>
 
