@@ -4,18 +4,22 @@
 
 You should leave this workshop today knowing the following:
 
-- Use FontImageSource to add Material Icons to your UI
-- Switch your existing `ListView` to `CollectionView`, a more performant alternative
-- Use Frames and background colors/font attributes to make your app more visually appearing
-- Switch your app to use Xamarin.Forms Shell, which handles your navigation for you
-- Switch a page of your app to use the Xamarin.Forms Visual system and implement Material design
-- Make a simple animation for a page
+- [] Use FontImageSource to add Material Icons to your UI
+- []Switch your existing `ListView` to `CollectionView`, a more performant alternative
+- [] Use Frames and background colors/font attributes to make your app more visually appearing
+- [] Switch your app to use Xamarin.Forms Shell, which handles your navigation for you
+- [] Switch a page of your app to use the Xamarin.Forms Visual system and implement Material design
+- [] Make a simple animation for a page
+
+![screenshot of beautiful Xamarin.forms App](media/beautifulapp.png)
 
 ## Before we begin – Choose your setup:
 
 What OS are you using?
 
 [Mac](#mac) | [Windows](#android)
+
+* * *
 
 ### <a id="mac"></a>Mac
 
