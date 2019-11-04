@@ -4,12 +4,12 @@
 
 You should leave this workshop today knowing the following:
 
-- [] Use FontImageSource to add Material Icons to your UI
-- []Switch your existing `ListView` to `CollectionView`, a more performant alternative
-- [] Use Frames and background colors/font attributes to make your app more visually appearing
-- [] Switch your app to use Xamarin.Forms Shell, which handles your navigation for you
-- [] Switch a page of your app to use the Xamarin.Forms Visual system and implement Material design
-- [] Make a simple animation for a page
+- [ ] [Use FontImageSource to add Material Icons to your UI](#fontimagesource).
+- [ ] [Switch your existing `ListView` to `CollectionView`](#collectionview).
+- [ ] [Use Frames and background colors/font attributes to make your app more visually appearing](#frames).
+- [ ] [Switch your app to use Xamarin.Forms Shell](#shell).
+- [ ] [Switch a page of your app to use the Xamarin.Forms Visual system and implement Material design](#material).
+- [ ] [Add a simple animation to a page](#effects).
 
 ![screenshot of beautiful Xamarin.forms App](media/beautifulapp.png)
 
@@ -30,6 +30,7 @@ Do you have Xcode installed?
 # <a id="macios"></a>Visual Studio for Mac and iOS
 
 ## Get set up
+{:toc}
 
 1. Download and open the sample from GitHub in Visual Studio for Mac.
 
@@ -40,7 +41,8 @@ Do you have Xcode installed?
 4. Start debugging the app by selecting **Debug | iOS Simulator** in the toolbar and press the Play button.
 Feel free to play around with the app in the simulator.
 
-## Use FontImageSource for beautiful icons
+## <a id="fontimagesource"></a>Use FontImageSource for beautiful icons
+{:toc}
 
 5. We want to update the toolbar button to something that looks a little better. This is done by using the `FontImageSource` capabilities available in Xamarin.Forms 4.0 and later. We have added the font file to the projects for you, and added the font as an app-wide `StaticResource`. To change the toolbar icon, replace the `ToolbarItem.IconImageSource` code in the `TodoListPage.xaml` file with:
 
@@ -74,7 +76,8 @@ Feel free to play around with the app in the simulator.
 
     Here you are changing the source from a file (string) to a `FontImageSource`, a new feature in Xamarin.Forms 4.0.
 
-## Using a Collection View
+## <a id="collectionview"></a>Using a Collection View
+{:toc}
 
 7. Now let's swap out the `ListView` for a more performant alternative - `CollectionView`, which is new in Xamarin.Forms 4.3. `CollectionView` automatically utilizes the virtualization capabilities of each native platform to make your lists appear faster. It also supports multiple columns of items, and a simpler API with no need for Cells. There are a few steps to change your `ListView` to a `CollectionView`:
 
@@ -129,7 +132,8 @@ Feel free to play around with the app in the simulator.
 
     Start debugging your app again to begin customizing the `CollectionView` using XAML Hot Reload!
 
-## Working with Frames and ItemTemplates
+## <a id="frames"></a>Working with Frames and ItemTemplates
+{:toc}
 
 8. We'll add some color to make the items stand out from the background. Under the data template and before the opening tag for the grid, add a `Frame` tag with a background color. We also need to set the `IsClippedToBounds=True` property on the Frame, to ensure that it respects the bounds:
 
@@ -158,7 +162,8 @@ Feel free to play around with the app in the simulator.
 
     Use a website like [Coolors](https://coolors.co/app) to generate a color scheme for your app. Set a `BackgroundColor` for the Frame, ContentPage, and if you'd like, a new color for the "Done" glyph. Change the `TextColor` for the items in the `ItemTemplate`, play around with `FontSize`, and add `FontAttributes` like "bold" or "italics". On your Frame, you can also add attributes like `CornerRadius` and `HasShadow`.
 
-## Adding Xamarin.Forms Shell
+## <a id="shell"></a>Adding Xamarin.Forms Shell
+{:toc}
 
 Xamarin.Forms Shell reduces the complexity of mobile app development by providing a single place to describe the visual hierarchy of an application. It also benefits your application by increased rendering speed and reduced memory consumption. For more information, see the [Xamarin.Forms Shell](https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/introduction) documentation.
 
@@ -170,7 +175,8 @@ Xamarin.Forms Shell reduces the complexity of mobile app development by providin
 
     Switch between the About tab (feel free to edit!) and the All Items tab. See how the options are respected no matter what page you're on. Change `Shell.TabBarUnselectedColor` and `Shell.TabBarForegroundColor` to see what happens when you switch pages.
 
-## Using Material Design
+## <a id="material"></a>Using Material Design
+{:toc}
 
 Blurb about material https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/visual/material-visual
 
@@ -180,7 +186,8 @@ Blurb about material https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user
 
 16. Change "Material" to "Default", and then add Visual="Material" to the overall headers of the page and save. Observe how it updates most of the controls on the page and gives it a consistent style.
 
-## Adding Effects
+## <a id="effects"></a>Adding Effects
+{:toc}
 
 17. Stop debuggin cuz gotta edit C# so no hot reload rip
 

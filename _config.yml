@@ -1,3 +1,5 @@
 remote_theme: pmarsceill/just-the-docs
-logo: media/beautifulapp.png 
-show_downloads: "true"
+heading_anchors: true
+aux_links:
+"View the workshop on GitHub":
+  - "//github.com/maddyleger1/Ignite2019-CreateBeautifulXFApps-Workshop"
