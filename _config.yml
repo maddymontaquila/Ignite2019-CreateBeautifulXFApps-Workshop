@@ -1,5 +1,9 @@
 remote_theme: pmarsceill/just-the-docs
+title: "Beautiful Xamarin.Forms Workshop"
+baseurl: "/Ignite2019-CreateBeautifulXFApps-Workshop"
+url: "https://maddyleger1.github.io"
 heading_anchors: true
+logo: "media/vsmac.png"
 aux_links:
-"View the workshop on GitHub":
-  - "//github.com/maddyleger1/Ignite2019-CreateBeautifulXFApps-Workshop"
+  "View the workshop on GitHub":
+    - "//github.com/maddyleger1/Ignite2019-CreateBeautifulXFApps-Workshop"
