@@ -31,9 +31,8 @@ Do you have Xcode installed?
 # <a id="macios"></a>Visual Studio for Mac and iOS
 
 ## <a id="setup"></a>Get set up
-{:toc}
 
-1. Download and open the sample from GitHub in Visual Studio for Mac.
+1. [Download and open the sample from GitHub](https://github.com/maddyleger1/Ignite2019-CreateBeautifulXFApps-Workshop/archive/master.zip) in Visual Studio for Mac.
 
 2. Open the .sln file within the **Start** folder. Once it opens in the IDE, double click on `TodoListPage.xaml` in the Views folder to open it in the editor.
 
@@ -43,9 +42,6 @@ Do you have Xcode installed?
 Feel free to play around with the app in the simulator.
 
 ## <a id="fontimagesource"></a>Use FontImageSource for beautiful icons
-{:toc}
-
-<ol start="5">
 
 5. We want to update the toolbar button to something that looks a little better. This is done by using the `FontImageSource` capabilities available in Xamarin.Forms 4.0 and later. We have added the font file to the projects for you, and added the font as an app-wide `StaticResource`. To change the toolbar icon, replace the `ToolbarItem.IconImageSource` code in the `TodoListPage.xaml` file with:
 
@@ -79,12 +75,7 @@ Feel free to play around with the app in the simulator.
 
     Here you are changing the source from a file (string) to a `FontImageSource`, a new feature in Xamarin.Forms 4.0.
 
-</ol>
-
 ## <a id="collectionview"></a>Using a Collection View
-{:toc}
-
-<ol start="7">
 
 7. Now let's swap out the `ListView` for a more performant alternative - `CollectionView`, which is new in Xamarin.Forms 4.3. `CollectionView` automatically utilizes the virtualization capabilities of each native platform to make your lists appear faster. It also supports multiple columns of items, and a simpler API with no need for Cells. There are a few steps to change your `ListView` to a `CollectionView`:
 
@@ -142,7 +133,6 @@ Feel free to play around with the app in the simulator.
 </ol>
 
 ## <a id="frames"></a>Working with Frames and ItemTemplates
-{:toc}
 
 8. We'll add some color to make the items stand out from the background. Under the data template and before the opening tag for the grid, add a `Frame` tag with a background color. We also need to set the `IsClippedToBounds=True` property on the Frame, to ensure that it respects the bounds:
 
