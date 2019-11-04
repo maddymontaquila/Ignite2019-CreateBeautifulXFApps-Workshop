@@ -4,6 +4,7 @@
 
 You should leave this workshop today knowing the following:
 
+- [ ] [Set up Visual Studio for Mac](#setup).
 - [ ] [Use FontImageSource to add Material Icons to your UI](#fontimagesource).
 - [ ] [Switch your existing `ListView` to `CollectionView`](#collectionview).
 - [ ] [Use Frames and background colors/font attributes to make your app more visually appearing](#frames).
@@ -29,7 +30,7 @@ Do you have Xcode installed?
 
 # <a id="macios"></a>Visual Studio for Mac and iOS
 
-## Get set up
+## <a id="setup"></a>Get set up
 {:toc}
 
 1. Download and open the sample from GitHub in Visual Studio for Mac.
@@ -43,6 +44,8 @@ Feel free to play around with the app in the simulator.
 
 ## <a id="fontimagesource"></a>Use FontImageSource for beautiful icons
 {:toc}
+
+<ol start="5">
 
 5. We want to update the toolbar button to something that looks a little better. This is done by using the `FontImageSource` capabilities available in Xamarin.Forms 4.0 and later. We have added the font file to the projects for you, and added the font as an app-wide `StaticResource`. To change the toolbar icon, replace the `ToolbarItem.IconImageSource` code in the `TodoListPage.xaml` file with:
 
@@ -76,8 +79,12 @@ Feel free to play around with the app in the simulator.
 
     Here you are changing the source from a file (string) to a `FontImageSource`, a new feature in Xamarin.Forms 4.0.
 
+</ol>
+
 ## <a id="collectionview"></a>Using a Collection View
 {:toc}
+
+<ol start="7">
 
 7. Now let's swap out the `ListView` for a more performant alternative - `CollectionView`, which is new in Xamarin.Forms 4.3. `CollectionView` automatically utilizes the virtualization capabilities of each native platform to make your lists appear faster. It also supports multiple columns of items, and a simpler API with no need for Cells. There are a few steps to change your `ListView` to a `CollectionView`:
 
@@ -131,6 +138,8 @@ Feel free to play around with the app in the simulator.
     ```
 
     Start debugging your app again to begin customizing the `CollectionView` using XAML Hot Reload!
+
+</ol>
 
 ## <a id="frames"></a>Working with Frames and ItemTemplates
 {:toc}
