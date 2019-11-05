@@ -206,4 +206,3 @@ One great way to make your app visually appealing is by adding some effects on a
     ```
 
 20. Finally, run the app and set some of your items to "done" to see the animations in action.
-
