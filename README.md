@@ -14,22 +14,6 @@ You should leave this workshop today knowing the following:
 
 ![screenshot of beautiful Xamarin.forms App](media/beautifulapp.png)
 
-## Before we begin – Choose your setup:
-
-What OS are you using?
-
-[Mac](#mac) | [Windows](#android)
-
-* * *
-
-### <a id="mac"></a>Mac
-
-Do you have Xcode installed?
-
-[Yes](#macios) | [No](#android)
-
-# <a id="macios"></a>Visual Studio for Mac and iOS
-
 ## <a id="setup"></a>Get set up
 
 1. [Download and open the sample from GitHub](https://github.com/maddyleger1/Ignite2019-CreateBeautifulXFApps-Workshop/archive/master.zip) in Visual Studio for Mac.
@@ -222,8 +206,4 @@ One great way to make your app visually appealing is by adding some effects on a
     ```
 
 20. Finally, run the app and set some of your items to "done" to see the animations in action.
-
-### <a id="android"></a>Android
-
-1. Download and open the sample from GitHub in Visual Studio.
 
